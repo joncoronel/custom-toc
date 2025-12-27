@@ -1,45 +1,46 @@
-# custom-toc
+# Custom TOC
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+A custom table of contents component with animated progress tracking for [Fumadocs](https://fumadocs.dev).
 
-Run development server:
+## Features
+
+- Vertical track with animated fill indicator
+- Circle marker that follows the current section
+- JavaScript and CSS animation variants
+- Server-side SVG pre-computation
+- Stepped mode for nested heading indentation
+
+## Demo
+
+Visit the [live demo](https://custom-toc.vercel.app) or run locally:
 
 ```bash
-npm run dev
-# or
+pnpm install
 pnpm dev
-# or
-yarn dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+Open <http://localhost:3000> to see the TOC in action.
 
-## Explore
+## Usage
 
-In the project, you can see:
+The TOC components are in `app/docs/components/docs/`.
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+### Quick Start
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+```tsx
+import { FillTOCServer } from "./components/docs/toc-fill-server";
 
-### Fumadocs MDX
+<DocsPage
+  tableOfContent={{
+    component: <FillTOCServer toc={page.data.toc} stepped />,
+  }}
+>
+```
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
+## Components
 
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.dev) - learn about Fumadocs
+| Component | Description |
+| --- | --- |
+| `FillTOC` | Main TOC with fill animation |
+| `DefaultTOC` | Simpler variant highlighting visible sections |
+| `FillTOCServer` / `DefaultTOCServer` | Server wrappers for pre-computed SVG paths |

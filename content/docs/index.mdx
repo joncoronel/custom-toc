@@ -1,13 +1,55 @@
 ---
-title: Hello World
-description: Your first document
+title: Custom TOC
+description: A custom table of contents with animated progress tracking
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+## Components
 
-## What is Next?
+### FillTOC
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
-</Cards>
+The main fill-style TOC. Two animation variants available:
+
+- **JavaScript** - Uses `requestAnimationFrame` for synchronized animations
+- **CSS** - Uses CSS transitions for a lighter approach
+
+To switch variants, change the import in [toc-fill-server.tsx](app/docs/components/docs/toc-fill-server.tsx):
+
+```tsx
+import { FillTOC } from "./toc-fill-javascript";
+// import { FillTOC } from "./toc-fill-css";
+```
+
+### DefaultTOC
+
+A simpler variant that highlights all visible sections simultaneously.
+
+### Server Wrappers
+
+`FillTOCServer` and `DefaultTOCServer` pre-compute the SVG path on the server so the track is visible immediately on load. Optional—use `FillTOC` or `DefaultTOC` directly if you don't need this.
+
+## Usage
+
+With server wrapper (used in [page.tsx](app/docs/[[...slug]]/page.tsx)):
+
+```tsx
+import { FillTOCServer } from "./components/docs/toc-fill-server";
+
+<DocsPage
+  tableOfContent={{
+    component: <FillTOCServer toc={page.data.toc} stepped />,
+  }}
+>
+```
+
+Without server wrapper:
+
+```tsx
+import { FillTOC } from "./components/docs/toc-fill-javascript";
+
+<FillTOC toc={toc} stepped />
+```
+
+### Props
+
+- `toc` - Array of TOC items from fumadocs
+- `stepped` - Enable indentation for nested headings
