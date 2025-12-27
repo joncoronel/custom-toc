@@ -12,7 +12,7 @@ The main fill-style TOC. Two animation variants available:
 - **JavaScript** - Uses `requestAnimationFrame` for synchronized animations
 - **CSS** - Uses CSS transitions for a lighter approach
 
-To switch variants, change the import in [toc-fill-server.tsx](app/docs/components/docs/toc-fill-server.tsx):
+To switch variants, change the import in `toc-fill-server.tsx`:
 
 ```tsx
 import { FillTOC } from "./toc-fill-javascript";
@@ -29,7 +29,7 @@ A simpler variant that highlights all visible sections simultaneously.
 
 ## Usage
 
-With server wrapper (used in [page.tsx](app/docs/[[...slug]]/page.tsx)):
+With server wrapper (used in `page.tsx`):
 
 ```tsx
 import { FillTOCServer } from "./components/docs/toc-fill-server";
