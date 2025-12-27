@@ -7,16 +7,18 @@ description: A custom table of contents with animated progress tracking
 
 ### FillTOC
 
-The main fill-style TOC. Two animation variants available:
+The main fill-style TOC. Three animation variants available:
 
 - **JavaScript** - Uses `requestAnimationFrame` for synchronized animations
 - **CSS** - Uses CSS transitions for a lighter approach
+- **Motion** - Uses [Motion](https://motion.dev) for declarative animations
 
 To switch variants, change the import in `toc-fill-server.tsx`:
 
 ```tsx
 import { FillTOC } from "./toc-fill-javascript";
 // import { FillTOC } from "./toc-fill-css";
+// import { FillTOC } from "./toc-fill-motion";
 ```
 
 ### DefaultTOC

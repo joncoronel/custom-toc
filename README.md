@@ -6,7 +6,7 @@ A custom table of contents component with animated progress tracking for [Fumado
 
 - Vertical track with animated fill indicator
 - Circle marker that follows the current section
-- JavaScript and CSS animation variants
+- JavaScript, CSS, and Motion animation variants
 - Server-side SVG pre-computation
 - Stepped mode for nested heading indentation
 
